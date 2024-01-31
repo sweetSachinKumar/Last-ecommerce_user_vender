@@ -12,19 +12,22 @@ const ProductDetailPage = () => {
     const {singleProduct} = useSelector(state => state.product)
     const {id:urlId} = useParams()
     const dispatch = useDispatch()
-    const relatedProductCtg = singleProduct?.category
+    const relatedProductCtg = singleProduct.category
+
+    if(relatedProductCtg) {
+        dispatch(fetchProductByQuery(relatedProductCtg))
+    }
     
 console.log(queryProduct, relatedProductCtg)
     useEffect(()=> {
         window.scrollTo(0,0)
         dispatch(getSingleProduct(urlId))
-        dispatch(fetchProductByQuery(relatedProductCtg))
+        if(relatedProductCtg) {
+            dispatch(fetchProductByQuery(relatedProductCtg))
+        }
+
             },[urlId])
-    useEffect(()=> {
-        window.scrollTo(0,0)
-        dispatch(getSingleProduct(urlId))
-        dispatch(fetchProductByQuery(relatedProductCtg))
-            },[])
+
   return (
     <div>
         <Navbar/>
