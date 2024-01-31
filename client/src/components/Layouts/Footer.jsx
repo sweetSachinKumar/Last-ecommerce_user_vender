@@ -90,11 +90,14 @@ const Footer = () => {
       </div>
       <div className="grid grid-cols-1 sm:gird-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
         <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
-          <img
+          {/* <img
             src="https://shopo.quomodothemes.website/assets/images/logo.svg"
             alt=""
             style={{ filter: "brightness(0) invert(1)" }}
-          />
+          /> */}
+         <div className='xl:text-4xl lg:text-2xl text-xl text-orange-600/90 font-semibold ' >
+            Sachin's <small>store</small>
+          </div>
           <br />
           <p>The home and elements needeed to create beatiful products.</p>
           <div className="flex items-center mt-[15px]">
