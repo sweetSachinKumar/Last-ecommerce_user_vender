@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineLogin, AiOutlineMessage } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
@@ -13,15 +13,23 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { backendUrl } from '../../serverUrl';
 import { Link, useNavigate } from 'react-router-dom';
+import { Spinner } from '@material-tailwind/react';
 
 
 
 
 const ProfileSidebar = ({setActive, active}) => {
+
+  const [isLogingOut, setIsLogingOut] = useState(false)
+
+
 const navigate = useNavigate()
     const {user} = useSelector(state => state.user)
+
+
     const logoutHandler = async () => {
-      console.log("logout")
+      setIsLogingOut(true)
+      // console.log("logout")
       
 //     const response = await axios.post(`${backendUrl}user/logout`,
 //     { withCredentials: true }
@@ -35,8 +43,13 @@ const response =  await axios.get(`${backendUrl}user/logout`,
 console.log(response)
 if(response){
   navigate("/")
+  console.log("log out")
+  setIsLogingOut(false)
+
   window.location.reload(true); 
 }
+// setIsLogingOut(false)
+
     }
 
   return (
@@ -120,7 +133,7 @@ if(response){
       className="single_item flex items-center cursor-pointer w-full mb-8"
       onClick={logoutHandler}
     >
-      <AiOutlineLogin size={20} color={active === 8 ? "red" : ""} />
+   { isLogingOut ? <Spinner/> : <AiOutlineLogin size={20} color={active === 8 ? "red" : ""} />}
       <span
         className={`pl-3 ${
           active === 8 ? "text-[red]" : ""

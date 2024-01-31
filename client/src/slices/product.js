@@ -64,10 +64,14 @@ const productSlice = createSlice({
             // console.log(action.payload.myProductCategory)
         })
         .addCase(fetchProductByQuery.pending, (state)=> {
+            state.qloading = true
+        })
+       
+        .addCase(getSingleProduct.pending, (state)=> {
             state.loading = true
         })
         .addCase(fetchProductByQuery.fulfilled, (state, action)=> {
-            state.loading = false
+            state.qloading = false
             state.queryProduct=action.payload.data
             // console.log(action.payload)
         })

@@ -50,10 +50,10 @@ const cartSlice = createSlice({
             state.error = "some error occured"
         })
         .addCase(updateCart.pending, (state) => {
-            state.loading = true
+            state.uloading = true
         })
         .addCase(updateCart.fulfilled, (state, action) => {
-            state.loading = false
+            state.uloading = false
             // state.cart = action.payload.cart
             console.log("updated ", action.payload)
         })

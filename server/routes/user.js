@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
-router.route("/logout").get(isAuthenticate, logout)
+router.route("/logout").get(logout)
 router.route("/googleauth").post(googleauth)
 router.route('/getuser').get(isAuthenticate, getuser)
 router.route("/forgotPassword").post(forgotPassword)

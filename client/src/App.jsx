@@ -32,9 +32,8 @@ import AdminOrderDetailes from "./Pages/AdminOrderDetailes"
 import ProductDetails from "./components/Route/ProductDetails"
 import ProductDetailPage from "./Pages/ProductDetailPage"
 import FaqPage from "./Pages/FaqPage"
-
-
-
+import NotFound from "./Pages/NotFound"
+// import { Spinner } from "@material-tailwind/react";
 
 
 function App() {
@@ -48,8 +47,12 @@ function App() {
 
   return (
     <div className="overflow-x-hidden">
+      
     <Router >
+    {/* <Spinner color="red"  className="h-10 w-10 text-gray-200" /> */}
+   
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/gotocart" element={<CartPage />} />
@@ -104,6 +107,7 @@ function App() {
         <AdminProducts />
         </AdminProtectedRoute>
         } />
+        <Route path="*" element={<NotFound/>} />
 
       </Routes>
 

@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {  fetchProductByQuery, getSingleProduct } from '../slices/product'
 import ProductCard from '../components/Route/ProductCard'
+import Loader from '../components/Layouts/Loader'
 
 
 const ProductDetailPage = () => {
-    const { queryProduct } = useSelector(state => state.product)
-    const {singleProduct} = useSelector(state => state.product)
+    const { queryProduct, singleProduct,qloading, loading} = useSelector(state => state.product)
     const {id:urlId} = useParams()
     const dispatch = useDispatch()
     const relatedProductCtg = singleProduct.category
@@ -31,10 +31,14 @@ console.log(queryProduct, relatedProductCtg)
   return (
     <div>
         <Navbar/>
-    {  singleProduct &&  <ProductDetails singleProduct={singleProduct} />}
+        
+{qloading && <Loader/>}
 
+    {  (singleProduct && !qloading) &&  <ProductDetails singleProduct={singleProduct} />}
 
-    {queryProduct &&
+{(loading && !qloading) && <Loader/>}
+
+    {(queryProduct && !loading)  &&
                  
                     <section className='pt-24 px-2 container mx-auto'>
                         <div >

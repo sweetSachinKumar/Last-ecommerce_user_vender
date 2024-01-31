@@ -5,13 +5,16 @@ import Category3 from '../components/Route/Category3'
 import SlideProducts from '../components/Route/SlideProducts'
 import { useSelector } from 'react-redux'
 import Footer from '../components/Layouts/Footer'
+import {Spinner} from "@material-tailwind/react"
+import Loader from '../components/Layouts/Loader'
 const Home = () => {
-  const {allProducts} = useSelector(state => state.product)
+  const {allProducts, loading} = useSelector(state => state.product)
   return (
     <div>
       <Navbar />
       <Banner />
       <Category3/>
+      {loading && <Loader />}
 {
   allProducts &&(
     <>

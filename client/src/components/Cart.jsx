@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllCart } from '../slices/cart'
 import { backendUrl } from '../serverUrl'
@@ -11,24 +11,35 @@ const Cart = ({ item }) => {
   const { _id: id, thumbnail, title, price, qty: quantity } = item
   const dispatch = useDispatch()
 
+  const [loading, setLoading] = useState(false)
+
 
   const incrementQty = async ({id, qty}) => {
+    setLoading(true)
     console.log(id, qty)
     const response =  await axios.post(`${backendUrl}cart/updateCart/${id}`,{qty},
     { withCredentials: true }
   )
   if(response.data.success) {
     dispatch(getAllCart())
+    setLoading(false)
+
   }
+  setLoading(false)
+
  
   }
 
   const decrementQty = async({id, qty}) => {
+    setLoading(true)
+
     const response =  await axios.post(`${backendUrl}cart/updateCart/${id}`,{qty},
     { withCredentials: true }
   )
   if(response.data.success) {
     dispatch(getAllCart())
+    setLoading(false)
+
   }
 
   }
@@ -55,7 +66,7 @@ const removeFromCart = async (id) => {
               {/* minus icon  */}
               <IoMdRemove />
             </button>
-            <div>
+            <div className={loading && "text-gray-500/95"}>
               {/* amount  */}
               {quantity}
             </div>
@@ -85,7 +96,7 @@ const removeFromCart = async (id) => {
                 {/* minus icon  */}
                 <IoMdRemove />
               </button>
-              <div>
+              <div className={loading && "text-gray-500/95"}>
                 {/* amount  */}
                 {quantity}
               </div>

@@ -123,7 +123,6 @@ exports.getuser = catchAsyncError(async (req, res, next) => {
 // logout 
 exports.logout = catchAsyncError(async (req, res, next) => {
 try{
-
   res.status(201).cookie("token", null, { expires: new Date(Date.now()), httpOnly: true}).json({ success: true,  message: "Log out successful!"})
 
 } catch (err) {

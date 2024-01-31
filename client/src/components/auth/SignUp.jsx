@@ -6,8 +6,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import OAuth from './OAuth';
 import { backendUrl } from '../../serverUrl';
+import { Spinner } from '@material-tailwind/react';
 const SignUp = () => {
 const [avatar, setAvatar] = useState(null)
+const [loading, setLoading] = useState(false)
     const {register, handleSubmit, watch, formState:{errors}} = useForm() 
     //    const dispatch = useDispatch()
       const navigate = useNavigate()
@@ -26,6 +28,7 @@ const handleFileInputChange = (e) => {
 }
      
 const submit = async (data) =>{
+  setLoading(true)
   const {name,email, password} = data
    await axios
      .post(
@@ -39,12 +42,14 @@ const submit = async (data) =>{
        { withCredentials: true }
      )
      .then((res) => {
+      setLoading(false)
        toast.success("Login Success!");
        navigate("/");
-       window.location.reload(true); 
+       window.location.reload(true);
        console.log(res)
      })
      .catch((err) => {
+      setLoading(false)
        toast.error(err.response.data.message);
      });
  
@@ -118,8 +123,8 @@ const submit = async (data) =>{
             </div>
            </div>
            <div>
-             <button type='submit' className=' w-full bg-orange-600/80 hover:bg-orange-600/90 active:bg-orange-600/70 text-white py-1.5 text-sm font-semibold leading-6 shadow-sm ' >
-             Sign in
+             <button type='submit' disabled={loading} className=' w-full h-full flex items-center justify-center bg-orange-600/80 hover:bg-orange-600/90 active:bg-orange-600/70 text-white py-1.5 text-sm font-semibold leading-6 shadow-sm ' >
+          {loading ? <Spinner/> : "Sign in"}   
              </button>
            </div>
          </form>

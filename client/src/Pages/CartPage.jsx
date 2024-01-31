@@ -3,9 +3,11 @@ import { useSelector } from 'react-redux'
 import Cart from '../components/Cart'
 import Navbar from '../components/Layouts/Navbar'
 import { Link } from 'react-router-dom'
+import Footer from '../components/Layouts/Footer'
+import Loader from '../components/Layouts/Loader'
 
 const CartPage = () => {
-    const {cart} = useSelector(state => state.cart) 
+    const {cart, loading} = useSelector(state => state.cart) 
     const {isAuthenticated} = useSelector(state => state.user) 
 const [total, setTotal] = useState(0)
 
@@ -28,6 +30,7 @@ useEffect(() => {
             <div className='grid grid-cols-1 xl:grid-cols-12 gap-8 '>
 
           <div className='container px-5 mx-auto col-span-1 xl:col-span-8'>
+{/* {loading && <Loader/>} */}
 
 {
     cart && isAuthenticated &&  cart.length === 0 ? 
@@ -54,6 +57,8 @@ useEffect(() => {
           <CreateAccMSG />
         </div> }
     </div>
+    
+<Footer/>
     </>
   )
 }
@@ -77,10 +82,13 @@ const ZeroItemMSG = () => {
 export const CreateAccMSG = () => {
 
   return (
+    <>
     <div className='border p-8 sm:p-12 md:p-16 rounded-md shadow-lg hover:shadow-md'>
       <h2 className='md:text-5xl text-2xl sm:text-3xl font-semibold my-4 md:my-8 text-neutral-800'>You have no account! </h2>
       <p> <span className='text-base md:text-xl'>create your new account Now </span>   <Link to="/signup" className=' text-orange-800 text-xs md:text-base hover:text-orange-900/70 font-bold tracking-wide px-3  underline '>sing in</Link>
       </p>
     </div>
+
+    </>
   )
 }

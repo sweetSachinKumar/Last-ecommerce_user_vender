@@ -4,7 +4,7 @@ import { decodeJwt } from 'jose'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-
+import { backendUrl } from '../../serverUrl'
 
 const OAuth = () => {
     console.log("oauth")
@@ -21,7 +21,7 @@ const OAuth = () => {
 
   await axios
   .post(
-    `http://localhost:4000/user/googleauth`,
+    `${backendUrl}user/googleauth`,
     {
      name,
       email,

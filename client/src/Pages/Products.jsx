@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductByQuery } from '../slices/product'
 import ProductCard from '../components/Route/ProductCard'
 import { BiFilterAlt, BiSortDown } from 'react-icons/bi'
+import Footer from '../components/Layouts/Footer'
+import Loader from '../components/Layouts/Loader'
 
 const Products = () => {
   const [myQuery, setMyQuery] = useState("laptops")
@@ -12,7 +14,7 @@ const Products = () => {
 console.log(myQuery)
   const dispatch = useDispatch()
 
-  const { queryProduct } = useSelector(state => state.product)
+  const { queryProduct, loading } = useSelector(state => state.product)
 
   console.log(queryProduct)
 
@@ -30,6 +32,9 @@ console.log(myQuery)
       <div className='flex gap-2'>
       <ProductSidebar myQuery={myQuery} setMyQuery={setMyQuery} open={open} setOpen={setOpen} />
       <div className='mt-7 p-2 w-full'>
+        {
+          loading ? <Loader/> :
+          <>
         <div className='flex items-center justify-between mb-9 '>
         <h4 className='text-2xl md:text-3xl font-bold tracking-wide text-neutral-700 mb-8'>Products</h4>
         <span className='p-4 cursor-pointer text-neutral-800 md:hidden active:text-neutral-800/85' onClick={()=> setOpen(!open)}  >
@@ -41,8 +46,11 @@ console.log(myQuery)
             queryProduct && queryProduct?.map(product => <ProductCard product={product} key={product._id} /> )
           }
         </div>
+        </>
+          }
       </div>
       </div>
+      <Footer/>
     </div>
   )
 }

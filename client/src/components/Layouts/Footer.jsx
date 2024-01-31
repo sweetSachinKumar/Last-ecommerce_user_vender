@@ -95,7 +95,7 @@ const Footer = () => {
             alt=""
             style={{ filter: "brightness(0) invert(1)" }}
           /> */}
-         <div className='xl:text-4xl lg:text-2xl text-xl text-orange-600/90 font-semibold ' >
+         <div className='lg:text-4xl text-3xl text-orange-600/90 font-semibold ' >
             Sachin's <small>store</small>
           </div>
           <br />
