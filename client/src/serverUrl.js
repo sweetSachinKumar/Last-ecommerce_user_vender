@@ -1,2 +1,2 @@
 // export const backendUrl = "http://localhost:4000/"
-export const backendUrl = "https://last-ecommerce-backend.vercel.app/"
+export const backendUrl = "https://ecommerce-backend-vender-data.vercel.app/"
