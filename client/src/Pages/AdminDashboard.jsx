@@ -1,5 +1,6 @@
 import React from 'react'
 import AdminSidebar from '../components/Layouts/AdminSidebar'
+import Dashboard from '../components/Admin/Dashboard'
 
 const AdminDashboard = () => {
   return (
@@ -8,7 +9,7 @@ const AdminDashboard = () => {
         <div className='w-[80px] 800px:w-[330px] '>
             <AdminSidebar active={1} />
         </div>
-        overview
+        <Dashboard/>
     </div> 
     </div>
   )

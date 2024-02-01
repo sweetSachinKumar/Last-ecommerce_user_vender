@@ -32,13 +32,13 @@ console.log(queryProduct, relatedProductCtg)
     <div>
         <Navbar/>
         
+
+    {  (singleProduct ) &&  <ProductDetails singleProduct={singleProduct} />}
+
 {qloading && <Loader/>}
-
-    {  (singleProduct && !qloading) &&  <ProductDetails singleProduct={singleProduct} />}
-
 {(loading && !qloading) && <Loader/>}
 
-    {(queryProduct && !loading)  &&
+    {(queryProduct )  &&
                  
                     <section className='pt-24 px-2 container mx-auto'>
                         <div >

@@ -10,6 +10,7 @@ import axios from 'axios';
 import { backendUrl } from '../../serverUrl';
 import { toast } from "react-toastify"
 import { loadUser, updateUserInformation } from '../../slices/user';
+import Loader from '../Layouts/Loader';
  
 const ProfileContent = ({ active }) => {
   const { user} = useSelector(state => state.user)
@@ -231,7 +232,7 @@ const ChangePassword = () => {
 
 //  alal orders 
 const AllOrders = () => {
-const {orders} = useSelector(state => state.order)
+const {orders, loading} = useSelector(state => state.order)
   const dispatch = useDispatch()
  
 
@@ -255,6 +256,10 @@ const {orders} = useSelector(state => state.order)
                     </tr>
                 </thead>
                 <tbody>
+
+                  {
+                    loading && <Loader/>
+                  }
 
                     {  orders &&
                    orders?.map(order=>{

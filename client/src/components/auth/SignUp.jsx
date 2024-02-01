@@ -7,6 +7,9 @@ import { toast } from 'react-toastify';
 import OAuth from './OAuth';
 import { backendUrl } from '../../serverUrl';
 import { Spinner } from '@material-tailwind/react';
+
+
+
 const SignUp = () => {
 const [avatar, setAvatar] = useState(null)
 const [loading, setLoading] = useState(false)
@@ -60,7 +63,7 @@ const submit = async (data) =>{
   return (
     <div className='flex items-center justify-center h-screen px-9'>
     {/* box  */}
-   <div className=' h-full pt-24 pb-16 w-full '>
+   <div className=' h-fullpt-14 w-full '>
    
      <h2 className='text-center text-2xl font-bold tracking-tight text-gray-900'>Sign Up </h2>
      <div className='my-5'>

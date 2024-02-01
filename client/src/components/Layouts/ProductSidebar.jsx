@@ -15,7 +15,7 @@ const ProductSidebar = ({setMyQuery,myQuery, open, setOpen}) => {
      ]
   return (
     <>
-      <div className={` w-full   shadow-sm rounded-[10px] p-4 pt-8 md:static  bg-white absolute top-12 ${open? "left-0": "-right-full"} z-50  h-[80vh] duration-300 max-w-[250px]`}>
+      <div className={` w-full   shadow-sm rounded-[10px] p-4 pt-8 md:static  bg-white absolute top-12 ${open? "left-0": "-left-full"} z-50  h-[80vh] duration-300 max-w-[250px]`}>
         <div className='bg-white'>
        <h3 className='md:text-2xl font-semibold mt-8 font-[Arial] text-xl text-neutral-800/90'>Categories</h3>   
     <ul className='ps-5 text-sm md:text-base space-y-1 mt-3 capitalize'>

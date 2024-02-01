@@ -128,6 +128,9 @@ const orderSlice = createSlice({
             console.log(action.error.message)
             state.error = "some error occured"
         })
+        .addCase(singleOrder.pending, (state) => {
+            state.loading = true
+        })
         .addCase(singleOrder.fulfilled, (state, action) => {
             state.loading = false
             // console.log("orders  single",action.payload)

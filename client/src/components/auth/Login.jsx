@@ -38,6 +38,7 @@ const submit = async (data) =>{
 
       
   return (
+    
     <div className='flex items-center justify-center h-screen px-9'>
     {/* box  */}
    <div className=' h-[50vh] w-full '>

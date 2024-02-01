@@ -29,7 +29,7 @@ console.log(myQuery)
   return (
     <div>
     <Navbar />
-      <div className='flex gap-2'>
+      <div className='flex gap-2 mb-12'>
       <ProductSidebar myQuery={myQuery} setMyQuery={setMyQuery} open={open} setOpen={setOpen} />
       <div className='mt-7 p-2 w-full'>
         {
