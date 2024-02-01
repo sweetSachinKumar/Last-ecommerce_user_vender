@@ -70,7 +70,7 @@ const Dashboard = () => {
 
         </div>
        
-        <Loader />
+        {/* <Loader /> */}
       <div className=''>
         {(allProducts && !loading) &&
           <CTGproductChart allProduct={ctgData} />}
