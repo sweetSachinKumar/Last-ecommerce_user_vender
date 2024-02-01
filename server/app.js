@@ -9,7 +9,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(cookieParser());
 
 app.use(cors({
-    origin: ['https://last-ecommerce-user-vender.vercel.app/',],
+    origin: ['https://last-ecommerce-user-vender.vercel.app',],
     credentials: true
   }));
 
@@ -34,7 +34,7 @@ app.use("/cart", cart)
 app.use("/order", order)
 
 app.get("/", (req, res) => {
-    res.send("this is sachin")
+    res.send("this is sachin 2")
 })
 
 
