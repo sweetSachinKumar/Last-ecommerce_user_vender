@@ -34,7 +34,7 @@ app.use("/cart", cart)
 app.use("/order", order)
 
 app.get("/", (req, res) => {
-    res.send("this is sachin")
+    res.send("this is sachin 2")
 })
 
 
