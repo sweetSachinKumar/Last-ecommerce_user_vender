@@ -5,16 +5,16 @@ import {Bar, Doughnut} from "react-chartjs-2"
 
 
 // defaults.maintainAspectRatio = false
-defaults.responsive = true
-defaults.plugins.title.display = true
-defaults.plugins.title.align = "start"
+// defaults.responsive = true
+// defaults.plugins.title.display = true
+// defaults.plugins.title.align = "start"
 // defaults.plugins.title.font.size = 20
-defaults.plugins.title.color = "black"
+// defaults.plugins.title.color = "black"
 
 const CTGproductChart = ({allProduct}) => {
   return (
-    <div className='flex justify-center lg:justify-between flex-wrap gap-10 items-center lg:w-[60vw]'>
-        <div className=' '>
+    <div className='flex justify-center lg:flex-row flex-col lg:justify-between flex-wrap gap-10 items-center '>
+        <div className='sm:min-h-[300px]  h-full w-[85%] lg:w-[45%] mx-auto'>
       <Bar 
         data={{
             labels: allProduct.map(product => product.label),
@@ -38,16 +38,16 @@ const CTGproductChart = ({allProduct}) => {
             ]
         }}
     options={{
-        maintainAspectRatio: true,
-        legend: {
-            labels: {
-                fontSize: 20
-            }
-        }
+        // maintainAspectRatio: true,
+        // legend: {
+        //     labels: {
+        //         fontSize: 20
+        //     }
+        // }
     }}
       />
       </div>
-      <div  className=' '>
+      <div  className=' mt-3 sm:mt-0 sm:min-h-[300px] flex items-center justify-center  h-full w-[85%] lg:w-[45%] mx-auto'>
         <Doughnut 
         data={{
             labels: ["users", "orders"],

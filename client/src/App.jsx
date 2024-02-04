@@ -33,6 +33,8 @@ import ProductDetails from "./components/Route/ProductDetails"
 import ProductDetailPage from "./Pages/ProductDetailPage"
 import FaqPage from "./Pages/FaqPage"
 import NotFound from "./Pages/NotFound"
+import LoginPage from "./Pages/LoginPage"
+import SignupPage from "./Pages/SignupPage"
 // import { Spinner } from "@material-tailwind/react";
 
 
@@ -46,7 +48,7 @@ function App() {
   }, [])
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden screen-style">
       
     <Router >
     {/* <Spinner color="red"  className="h-10 w-10 text-gray-200" /> */}
@@ -56,8 +58,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/gotocart" element={<CartPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgotPassword" element={<ForgotPassword />}  />   
         <Route path="/resetPassword/:token" element={<ResetPassword />}  />   
 

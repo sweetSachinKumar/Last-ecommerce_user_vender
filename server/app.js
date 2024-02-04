@@ -12,6 +12,10 @@ app.use(cors({
     origin: ['https://last-ecommerce-user-vender.vercel.app',],
     credentials: true
   }));
+// app.use(cors({
+//     origin: ['http://localhost:5173'],
+//     credentials: true
+//   }));
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
@@ -34,7 +38,7 @@ app.use("/cart", cart)
 app.use("/order", order)
 
 app.get("/", (req, res) => {
-    res.send("this is sachin 2")
+    res.send("this is sachin kumar")
 })
 
 

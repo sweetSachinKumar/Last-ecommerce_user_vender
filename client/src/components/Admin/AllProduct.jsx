@@ -32,7 +32,7 @@ const AllProduct = () => {
 
 
   return (
-    <div className='py-12 mb-32 overflow-auto   sm:w-full w-full min-w-min5'>
+    <div className='py-12 mb-32 overflow-auto   sm:w-full w-full min-w-min5 px-1'>
     <h3 className="uppercase text-center py-5 text-xl md:text-2xl font-semibold text-neutral-800/90">All Products</h3>
     <table className="w-full text-xs sm:text-sm lg:text-base min-w-[500px] min-h-[30vh]">
       <thead>

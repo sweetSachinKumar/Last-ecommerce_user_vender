@@ -12,11 +12,12 @@ const ProductDetailPage = () => {
     const { queryProduct, singleProduct,qloading, loading} = useSelector(state => state.product)
     const {id:urlId} = useParams()
     const dispatch = useDispatch()
-    const relatedProductCtg = singleProduct.category
+    const relatedProductCtg = singleProduct?.category
 
-    if(relatedProductCtg) {
+    useEffect(()=> {
         dispatch(fetchProductByQuery(relatedProductCtg))
-    }
+   
+    },[singleProduct])
     
 console.log(queryProduct, relatedProductCtg)
     useEffect(()=> {

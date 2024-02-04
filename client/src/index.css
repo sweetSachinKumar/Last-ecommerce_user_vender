@@ -5,6 +5,12 @@
  body{
     background-color: rgba(242, 243, 245, 0.348);
  }
+
+.screen-style{
+    max-width: 1600px;
+    margin: auto;
+}
+
 .slick-slide > div {
     margin:0 10px;
 }

@@ -2,11 +2,11 @@ const User = require("../models/User")
 const ErrorHandler = require("../utils/ErrorHandler")
 const catchAsyncError = require("../middleware/catchAsyncError")
 const sendToken = require("../utils/jwtToken")
-const Token = require("../models/TokenRestPass")
 const sendEmail = require("../utils/sendEmail")
 const bcypt = require("bcryptjs")
 const crypto = require("crypto");
 const cloudinary = require("cloudinary")
+const Token = require("../models/TokenRestPass")
 
 
 
@@ -17,25 +17,41 @@ try{
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
+let user;
 
-// const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-//   folder: "avatars"
-// })
-
-
-    const user =await User.create({
+if(avatar) {
+  
+  const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+    folder: "avatars"
+  })
+     user = await User.create({
         name, email, password,
-        // avatar: {
-        //   public_id: myCloud.public_id,
-        //   url: myCloud.secure_url,
-        // }
+        avatar: {
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+        }
     })
+  } else {
+
+    user = await User.create({
+      name, email, password,
+      avatar: {
+        public_id: null,
+        url: null,
+      }
+  })
+
+  }
+
+
+
 
     // res.json({data:user})
     sendToken(user, 201, res)
 
 } catch (err) {
     // res.status(400).json({"erroris":err})
+    console.log(err)
     return next(new ErrorHandler(err.message, 400))
 }
 })

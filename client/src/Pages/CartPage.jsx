@@ -85,7 +85,7 @@ export const CreateAccMSG = () => {
     <>
     <div className='border p-8 sm:p-12 md:p-16 rounded-md shadow-lg hover:shadow-md'>
       <h2 className='md:text-5xl text-2xl sm:text-3xl font-semibold my-4 md:my-8 text-neutral-800'>You have no account! </h2>
-      <p> <span className='text-base md:text-xl'>create your new account Now </span>   <Link to="/signup" className=' text-orange-800 text-xs md:text-base hover:text-orange-900/70 font-bold tracking-wide px-3  underline '>sing in</Link>
+      <p> <span className='text-base md:text-xl'>create your new account Now </span>   <Link to="/signup" className=' text-orange-800 text-xs md:text-base hover:text-orange-900/70 font-bold tracking-wide px-3  underline '>sing up</Link>
       </p>
     </div>
 

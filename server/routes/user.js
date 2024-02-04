@@ -5,13 +5,13 @@ const router = express.Router()
 
 router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
-router.route("/logout").get(logout)
 router.route("/googleauth").post(googleauth)
 router.route('/getuser').get(isAuthenticate, getuser)
 router.route("/forgotPassword").post(forgotPassword)
 router.route("/resetPassword/:token").put(resetPassword)
 router.route("/getAllUser").get(isAuthenticate, isAdmin("Admin"), getAllUser)
 
+router.route("/logout").get(logout)
 router.route("/update-avatar").put(isAuthenticate, updateAvatar)
 
 router.route("/update-user-info").put(isAuthenticate, updateUserInfo)

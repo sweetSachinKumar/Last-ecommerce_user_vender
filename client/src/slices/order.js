@@ -129,10 +129,10 @@ const orderSlice = createSlice({
             state.error = "some error occured"
         })
         .addCase(singleOrder.pending, (state) => {
-            state.loading = true
+            state.Sloading = true
         })
         .addCase(singleOrder.fulfilled, (state, action) => {
-            state.loading = false
+            state.Sloading = false
             // console.log("orders  single",action.payload)
             state.singleOrderInfo = action.payload.getorder
         })

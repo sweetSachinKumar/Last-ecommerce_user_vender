@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom'
 import { singleOrder } from '../../slices/order'
 import axios from 'axios'
 import { backendUrl } from '../../serverUrl'
+import Loader from '../Layouts/Loader'
 
 const SingleOrderDetails = () => {
     const dispatch = useDispatch()
     const { id:urlId } = useParams()
-    const {singleOrderInfo} = useSelector(state => state.order)
+    const {singleOrderInfo, Sloading} = useSelector(state => state.order)
     const statusOr = useRef("processing")
 
     const handleStatus = async (id) => {
@@ -29,8 +30,12 @@ useEffect(()=> {
 },[])
 
   return (
+    <>
+    {
+      (Sloading ) ? <Loader /> :
+    
     <div className="grid py-14 md:grid-cols-12  m-3 w-full ">
-    <div className="lg:col-span-9  px-7 md:col-span-8 ">
+ {  singleOrderInfo?.cart && <div className="lg:col-span-9  px-7 md:col-span-8 ">
       <div>
         <h3 className="text-xl font-semibold text-gray-800/75 sm:text-2xl">Shipping Info</h3>
         <div className="mx-2 my-2 flex min-h-[75px] flex-col justify-around gap-1  p-1 text-xs text-neutral-800 sm:mx-4 sm:min-h-[100px] sm:text-sm">
@@ -66,8 +71,8 @@ useEffect(()=> {
 
         </div>
       </div>
-    </div>
- 
+    </div>}
+ {singleOrderInfo &&
     <div className="mt-14 md:mt-0 w-full px-7 md:col-span-4 lg:col-span-3  ">
       <h3 className="text-xl font-semibold text-gray-800/75 sm:text-2xl">Order Status</h3>
       <div className="mx-auto mt-4 flex flex-col space-y-5 px-4 sm:px-0">
@@ -80,8 +85,10 @@ useEffect(()=> {
 
         <button onClick={() => handleStatus(singleOrderInfo?._id)} className="border bg-orange-600/90 text-slate-200 hover:bg-orange-600/95 hover:text-slate-100 active:bg-orange-600/70">Process</button>
       </div>
-    </div>
+    </div>}
   </div>
+ }
+  </>
   )
 }
 

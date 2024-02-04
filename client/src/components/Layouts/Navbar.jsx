@@ -29,7 +29,7 @@ const Navbar = () => {
            <div className='z-30 shadow shadow-neutral-800/10 transition-shadow sticky left-0 right-0 top-0 bg-neutral-100/80 w-full'>
         <div className='  container mx-auto px-4 py-2  items-center justify-between  hidden lg:flex '>
           {/* logo  */}
-          <div className='xl:text-4xl lg:text-2xl text-xl text-orange-600/90 font-semibold ' >
+          <div className='xl:text-4xl lg:text-3xl text-2xl text-orange-600/90 font-semibold ' >
             Sachin's <small>store</small>
           </div>
 
@@ -83,21 +83,21 @@ const Navbar = () => {
 
 
       {/* mobiles  */}
-      <div className='z-30 shadow shadow-neutral-800/10 transition-shadow sticky left-0 right-0 top-0 bg-neutral-100/90 w-full '>
+      <div className='z-[2000]  shadow shadow-neutral-800/10 transition-shadow sticky left-0 right-0 top-0 bg-neutral-100/90 w-full '>
         <div className=' p-2  mx-auto   lg:hidden block'>
           {/* logo  */}
           <div className='flex justify-between items-center '>
-            <Link to="/" className='text-xl   sm:text-2xl  text-orange-600/90 font-semibold'>
+            <Link to="/" className='text-2xl   sm:text-2xl  text-orange-600/90 font-semibold'>
             Sachin's <small>store</small>
             </Link>
             <div className='flex items-center gap-2'>
               <Link to="/gotocart" className=' hover:text-neutral-700/80  transition active:text-neutral-950/70 text-neutral-800  text-xl  rounded-md relative' >
 
-                <IoMdCart size={25} />
+                <IoMdCart size={30} />
                 {(cart && checkUser) && <span className='text-neutral-100 font-bold font-mono text-sm bg-orange-600/90  px-2 rounded-xl absolute z-40 -bottom-1 right-3'>{cart?.length}</span>}
 
               </Link>
-              <div onClick={() => setIsOpen(!isOpen)} className='text-2xl  z-10 px-2 cursor-pointer transition'>
+              <div onClick={() => setIsOpen(!isOpen)} className='text-3xl  z-10 px-2 cursor-pointer transition'>
                 {isOpen ? <IoMdClose /> : <IoMdMenu />}
               </div>
 

@@ -52,11 +52,11 @@ const Dashboard = () => {
 
 (
 <>
-        <div className='grid grid-cols-3 gap-5 mx-auto'>
+        <div className='sm:grid flex flex-wrap justify-center items-center sm:grid-cols-3 grid-cols-1 gap-5 mx-auto mb-12'>
           {
             dataSet?.map(data => {
               return (
-                <div className=' shadow-md shadow-gray-300 flex gap-2 items-center p-3'>
+                <div className=' shadow-md shadow-gray-300 flex gap-2 items-center p-3 min-w-full'>
                   <span className={` text-xs md:text-sm  rounded-2xl p-2 text-white ${data.iconColor}`}>{data.icon}</span>
                   <div>
                     <p className='text-xs font-semibold text-slate-600'>{data.text}</p>
@@ -71,7 +71,7 @@ const Dashboard = () => {
         </div>
        
         {/* <Loader /> */}
-      <div className=''>
+      <div className='mb-12'>
         {(allProducts && !loading) &&
           <CTGproductChart allProduct={ctgData} />}
       </div>
