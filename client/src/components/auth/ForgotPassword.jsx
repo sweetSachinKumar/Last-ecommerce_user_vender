@@ -13,7 +13,6 @@ const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-console.log(email)
 
    await axios
      .post(
@@ -27,7 +26,6 @@ console.log(email)
        toast.success("reset password link email is send");
        navigate("/");
        window.location.reload(true); 
-       console.log(res)
      })
      .catch((err) => {
        toast.error(err.response.data.message);

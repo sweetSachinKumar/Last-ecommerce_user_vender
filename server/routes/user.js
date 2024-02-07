@@ -1,5 +1,5 @@
 const express = require("express")
-const { registerUser, loginUser, googleauth, getuser, forgotPassword, resetPassword, getAllUser, logout, updateAvatar, updateUserInfo, updateUserPassword } = require("../controllers/userController")
+const { registerUser, loginUser, googleauth, getuser, forgotPassword, resetPassword, getAllUser, logout, updateAvatar, updateUserInfo, updateUserPassword, deleteaUser } = require("../controllers/userController")
 const { isAuthenticate, isAdmin } = require("../middleware/auth")
 const router = express.Router()
 
@@ -17,5 +17,6 @@ router.route("/update-avatar").put(isAuthenticate, updateAvatar)
 router.route("/update-user-info").put(isAuthenticate, updateUserInfo)
 
 router.route("/update-user-password").put(isAuthenticate, updateUserPassword)
+router.route("/delete-user/:id").delete(isAuthenticate, isAdmin("Admin"), deleteaUser)
 
 module.exports = router

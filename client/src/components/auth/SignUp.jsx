@@ -49,7 +49,6 @@ const submit = async (data) =>{
        toast.success("Login Success!");
        navigate("/");
        window.location.reload(true);
-       console.log(res)
      })
      .catch((err) => {
       setLoading(false)
@@ -127,7 +126,7 @@ const submit = async (data) =>{
            </div>
            <div>
              <button type='submit' disabled={loading} className=' w-full h-full flex items-center justify-center bg-orange-600/80 hover:bg-orange-600/90 active:bg-orange-600/70 text-white py-1.5 text-sm font-semibold leading-6 shadow-sm ' >
-          {loading ? <Spinner/> : "Sign in"}   
+          {loading ? <Spinner/> : "Sign up"}   
              </button>
            </div>
          </form>

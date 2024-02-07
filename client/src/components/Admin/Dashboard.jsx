@@ -25,10 +25,8 @@ const Dashboard = () => {
   ]
 
 
-  console.log(usersLength, ctgData, allOrders?.length, totalProduct)
   const dispatch = useDispatch()
 
-  console.log(dataSet)
 
 
   useEffect(() => {
@@ -50,39 +48,39 @@ const Dashboard = () => {
     <div className='pt-12 px-3 pb-12 w-full'>
       {loading ? <Loader /> :
 
-(
-<>
-        <div className='sm:grid flex flex-wrap justify-center items-center sm:grid-cols-3 grid-cols-1 gap-5 mx-auto mb-12'>
-          {
-            dataSet?.map(data => {
-              return (
-                <div className=' shadow-md shadow-gray-300 flex gap-2 items-center p-3 min-w-full'>
-                  <span className={` text-xs md:text-sm  rounded-2xl p-2 text-white ${data.iconColor}`}>{data.icon}</span>
-                  <div>
-                    <p className='text-xs font-semibold text-slate-600'>{data.text}</p>
-                    <p className='text-sm font-bold font-[Arial] ps-2 text-slate-800'>{data.lengths}</p>
-                  </div>
-                </div>
-              )
-            })
-          }
+        (
+          <>
+            <div className='sm:grid flex flex-wrap justify-center items-center sm:grid-cols-3 grid-cols-1 gap-5 mx-auto mb-12'>
+              {
+                dataSet?.map(data => {
+                  return (
+                    <div className=' shadow-md shadow-gray-300 flex gap-2 items-center p-3 min-w-full'>
+                      <span className={` text-xs md:text-sm  rounded-2xl p-2 text-white ${data.iconColor}`}>{data.icon}</span>
+                      <div>
+                        <p className='text-xs font-semibold text-slate-600'>{data.text}</p>
+                        <p className='text-sm font-bold font-[Arial] ps-2 text-slate-800'>{data.lengths}</p>
+                      </div>
+                    </div>
+                  )
+                })
+              }
 
 
-        </div>
-       
-        {/* <Loader /> */}
-      <div className='mb-12'>
-        {(allProducts && !loading) &&
-          <CTGproductChart allProduct={ctgData} />}
-      </div>
+            </div>
 
-      <div>
-        <AllUsers />
-      </div>
-      </>
-      )
+            {/* <Loader /> */}
+            <div className='mb-12'>
+              {(allProducts && !loading) &&
+                <CTGproductChart allProduct={ctgData} />}
+            </div>
 
-}
+            <div>
+              <AllUsers />
+            </div>
+          </>
+        )
+
+      }
     </div>
   )
 }

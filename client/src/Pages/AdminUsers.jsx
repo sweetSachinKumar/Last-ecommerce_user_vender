@@ -5,14 +5,12 @@ import AllUsers from '../components/Admin/AllUsers'
 const AdminUsers = () => {
   return (
     <div className='w-full flex'>
-
-    <div className='flex'>
       <div className='w-[80px] 800px:w-[330px] '>
       <AdminSidebar active={4} />
     </div>
       <AllUsers />
     </div>
-    </div>
+ 
   )
 }
 

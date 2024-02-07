@@ -1,9 +1,9 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import './App.css'
 import Home from './Pages/Home'
 import Login from "./components/auth/Login"
 import SignUp from "./components/auth/SignUp"
-import {ToastContainer} from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react"
 
@@ -13,11 +13,11 @@ import ForgotPassword from "./components/auth/ForgotPassword"
 import ResetPassword from "./components/auth/ResetPassword"
 import ProfilePage from "./Pages/ProfilePage"
 import { fetchCategoryProducts } from "./slices/product"
-import Products from "./Pages/Products" 
- 
+import Products from "./Pages/Products"
+
 import AdminDashboard from "./Pages/AdminDashboard"
- 
-import ProtectedRoute from "./Protected-routes/ProtectedUserRoute" 
+
+import ProtectedRoute from "./Protected-routes/ProtectedUserRoute"
 import AdminProtectedRoute from "./Protected-routes/AdminProtectedRoute"
 import { getAllCart } from "./slices/cart"
 import CartPage from "./Pages/CartPage"
@@ -41,93 +41,93 @@ import SignupPage from "./Pages/SignupPage"
 function App() {
   const dispatch = useDispatch()
 
-  useEffect(  ()=> {
-  dispatch(loadUser())
-  dispatch(fetchCategoryProducts())
-  dispatch(getAllCart())
+  useEffect(() => {
+    dispatch(loadUser())
+    dispatch(fetchCategoryProducts())
+    dispatch(getAllCart())
   }, [])
 
   return (
     <div className="overflow-x-hidden screen-style">
-      
-    <Router >
-    {/* <Spinner color="red"  className="h-10 w-10 text-gray-200" /> */}
-   
-      <Routes>
 
-        <Route path="/" element={<Home />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/gotocart" element={<CartPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />}  />   
-        <Route path="/resetPassword/:token" element={<ResetPassword />}  />   
+      <Router >
+        {/* <Spinner color="red"  className="h-10 w-10 text-gray-200" /> */}
 
-        <Route path="/profile" element={
-         <ProtectedRoute >
-        <ProfilePage/>  
-        </ProtectedRoute>
-        } />
-        <Route path="/products" element={<Products/>} />
-        <Route path="/product/:id" element={<ProductDetailPage/>} />
+        <Routes>
 
-        {/* order  */}
-        <Route path="/order/shipping" element={
-          <ProtectedRoute >
-        <ShippingPage/>
-        </ProtectedRoute>
-        } />
-        
-        <Route path="/order/confirmOrder" element={<ConfirmOrderPage/>} />
-        <Route path="/order/paymentStep" element={<PaymentPage/>} />
-        <Route path="/orderSuccess" element={<SuccessOrder/>} /> 
+          <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/gotocart" element={<CartPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/resetPassword/:token" element={<ResetPassword />} />
 
-        <Route path="/admin/dashboard" element={
-          <AdminProtectedRoute >
-        <AdminDashboard />
-        </AdminProtectedRoute>
-        } />
+          <Route path="/profile" element={
+            <ProtectedRoute >
+              <ProfilePage />
+            </ProtectedRoute>
+          } />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetailPage />} />
+
+          {/* order  */}
+          <Route path="/order/shipping" element={
+            <ProtectedRoute >
+              <ShippingPage />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/order/confirmOrder" element={<ConfirmOrderPage />} />
+          <Route path="/order/paymentStep" element={<PaymentPage />} />
+          <Route path="/orderSuccess" element={<SuccessOrder />} />
+
+          <Route path="/admin/dashboard" element={
+            <AdminProtectedRoute >
+              <AdminDashboard />
+            </AdminProtectedRoute>
+          } />
 
 
-        <Route path="/admin-orders" element={
-          <AdminProtectedRoute >
-        <AdminOrders />
-        </AdminProtectedRoute>
-        } />
+          <Route path="/admin-orders" element={
+            <AdminProtectedRoute >
+              <AdminOrders />
+            </AdminProtectedRoute>
+          } />
 
-        <Route path="/orderdetails/:id" element={
-          <AdminProtectedRoute >
-        <AdminOrderDetailes />
-        </AdminProtectedRoute>
-        } />
-        <Route path="/admin-users" element={
-          <AdminProtectedRoute >
-        <AdminUsers />
-        </AdminProtectedRoute>
-        } />
-        <Route path="/admin-products" element={
-          <AdminProtectedRoute >
-        <AdminProducts />
-        </AdminProtectedRoute>
-        } />
-        <Route path="*" element={<NotFound/>} />
+          <Route path="/orderdetails/:id" element={
+            <AdminProtectedRoute >
+              <AdminOrderDetailes />
+            </AdminProtectedRoute>
+          } />
+          <Route path="/admin-users" element={
+            <AdminProtectedRoute >
+              <AdminUsers />
+            </AdminProtectedRoute>
+          } />
+          <Route path="/admin-products" element={
+            <AdminProtectedRoute >
+              <AdminProducts />
+            </AdminProtectedRoute>
+          } />
+          <Route path="*" element={<NotFound />} />
 
-      </Routes>
+        </Routes>
 
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-    </Router> 
-  </div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </Router>
+    </div>
   )
 }
 

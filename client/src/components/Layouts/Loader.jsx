@@ -15,4 +15,16 @@ const Loader = () => {
   )
 }
 
+
+export const smLoader = () => {
+
+  return(
+
+    <img src={lodingImg} alt="loaidng" className=' inline-block bg-contain w-[20px] h-[20px] mx-5'/>
+ 
+  )
+}
+
+
+
 export default Loader

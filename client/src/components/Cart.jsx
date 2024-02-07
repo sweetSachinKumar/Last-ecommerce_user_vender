@@ -14,45 +14,44 @@ const Cart = ({ item }) => {
   const [loading, setLoading] = useState(false)
 
 
-  const incrementQty = async ({id, qty}) => {
+  const incrementQty = async ({ id, qty }) => {
     setLoading(true)
-    console.log(id, qty)
-    const response =  await axios.post(`${backendUrl}cart/updateCart/${id}`,{qty},
-    { withCredentials: true }
-  )
-  if(response.data.success) {
-    dispatch(getAllCart())
+    const response = await axios.post(`${backendUrl}cart/updateCart/${id}`, { qty },
+      { withCredentials: true }
+    )
+    if (response.data.success) {
+      dispatch(getAllCart())
+      setLoading(false)
+
+    }
     setLoading(false)
 
-  }
-  setLoading(false)
 
- 
   }
 
-  const decrementQty = async({id, qty}) => {
+  const decrementQty = async ({ id, qty }) => {
     setLoading(true)
 
-    const response =  await axios.post(`${backendUrl}cart/updateCart/${id}`,{qty},
-    { withCredentials: true }
-  )
-  if(response.data.success) {
-    dispatch(getAllCart())
-    setLoading(false)
+    const response = await axios.post(`${backendUrl}cart/updateCart/${id}`, { qty },
+      { withCredentials: true }
+    )
+    if (response.data.success) {
+      dispatch(getAllCart())
+      setLoading(false)
+
+    }
 
   }
 
-  }
- 
-const removeFromCart = async (id) => {
-  const response =  await axios.delete(`${backendUrl}cart/deleteCart/${id}`,
-    { withCredentials: true }
-  )
-  if(response.data.success){
-    dispatch(getAllCart())
-  }
+  const removeFromCart = async (id) => {
+    const response = await axios.delete(`${backendUrl}cart/deleteCart/${id}`,
+      { withCredentials: true }
+    )
+    if (response.data.success) {
+      dispatch(getAllCart())
+    }
 
-}
+  }
 
 
   return (
@@ -62,7 +61,7 @@ const removeFromCart = async (id) => {
         <img src={thumbnail} className=' w-20 ' alt="idno" />
         <div className='sm:hidden'>
           <div className='flex sm:flex-1 max-w-[100px] items-center h-full border font-medium text-neutral-600   '>
-            <button disabled={quantity <= 1} onClick={() =>  decrementQty({id, qty: quantity - 1})} className='flex-1 disabled:text-neutral-400/70 h-full flex justify-center items-center cursor-pointer'>
+            <button disabled={quantity <= 1} onClick={() => decrementQty({ id, qty: quantity - 1 })} className='flex-1 disabled:text-neutral-400/70 h-full flex justify-center items-center cursor-pointer'>
               {/* minus icon  */}
               <IoMdRemove />
             </button>
@@ -70,7 +69,7 @@ const removeFromCart = async (id) => {
               {/* amount  */}
               {quantity}
             </div>
-            <div onClick={()=> incrementQty({id, qty: quantity + 1})} className='flex-1  h-full flex justify-center items-center cursor-pointer'>
+            <div onClick={() => incrementQty({ id, qty: quantity + 1 })} className='flex-1  h-full flex justify-center items-center cursor-pointer'>
               {/* minus icon  */}
               <IoMdAdd />
             </div>
@@ -92,7 +91,7 @@ const removeFromCart = async (id) => {
           {/* qty */}
           <div className='flex-1 max-w-[120px] hidden sm:block ' >
             <div className='flex sm:flex-1 max-w-[100px] items-center h-full border font-medium text-neutral-600   '>
-              <button disabled={quantity <= 1} onClick={()=> decrementQty({id, qty: quantity - 1})}  className='flex-1 disabled:text-neutral-400/70 h-full flex justify-center items-center cursor-pointer'>
+              <button disabled={quantity <= 1} onClick={() => decrementQty({ id, qty: quantity - 1 })} className='flex-1 disabled:text-neutral-400/70 h-full flex justify-center items-center cursor-pointer'>
                 {/* minus icon  */}
                 <IoMdRemove />
               </button>
@@ -100,7 +99,7 @@ const removeFromCart = async (id) => {
                 {/* amount  */}
                 {quantity}
               </div>
-              <div onClick={() => incrementQty({id, qty: quantity + 1})} className='flex-1  h-full flex justify-center items-center cursor-pointer'>
+              <div onClick={() => incrementQty({ id, qty: quantity + 1 })} className='flex-1  h-full flex justify-center items-center cursor-pointer'>
                 {/* plus icon  */}
                 <IoMdAdd />
               </div>
